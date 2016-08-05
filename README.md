@@ -3,10 +3,10 @@
 ### 1. Introduction
 
 This repository contains 4 files as part of the project submission for the Coursera course "Getting and Cleaning data". The files are:-
-  1. README.md - this readme file
-  2. CODEBOOK.md - describe the tidy data file and explains the transformations done to obtain the resulting data and variables.
-  3. run_analysis.R - the R scriptfile that contains the R script to complete the assigned tasks
-  4. HARtidydata.csv - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
+  1. CODEBOOK.md - describe the tidy data file and explains the transformations done to obtain the resulting data and variables.
+  2. HARtidydata.csv - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
+  3.   README.md - this readme file
+  4. run_analysis.R - the R scriptfile that contains the R script to complete the assigned tasks
 
 ### 2. Project Description
 
@@ -22,15 +22,15 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-*You should create one R script called run_analysis.R that does the following.*
-```
+*You should create one R script called run_analysis.R that does the following.
+
   1. Merges the training and the test sets to create one data set.
   2. Extracts only the measurements on the mean and standard deviation for each measurement.
   3. Uses descriptive activity names to name the activities in the data set
   4. Appropriately labels the data set with descriptive variable names.
   5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-```
-*Good luck!*
+
+Good luck!*
 
 ### 3. The Project Dataset
 The Project Dataset came as a result of an experiment conducted at the Università degli Studi di Genova. An extract from their readme file:- 
