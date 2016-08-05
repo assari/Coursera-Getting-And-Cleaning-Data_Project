@@ -4,10 +4,10 @@
 
 This repository contains 4 files as part of the project submission for the Coursera course "Getting and Cleaning data"
 The files are:-
-..1. README.md - this readme file
-..2. CODEBOOK.md - 
-..3. run_analysis.R - the R scriptfile that contains the R script to complete the project
-..4. HARtidydata.txt - the subset of HAR dataset in tidy data format and transformed as requested.
+  1. README.md - this readme file
+  2. CODEBOOK.md - 
+  3. run_analysis.R - the R scriptfile that contains the R script to complete the project
+  4. HARtidydata.txt - the subset of HAR dataset in tidy data format and transformed as requested.
 
 ### 2. The R Script run_analysis.R
 
