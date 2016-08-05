@@ -22,7 +22,7 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-*You should create one R script called run_analysis.R that does the following.
+*You should create one R script called run_analysis.R that does the following.*
 
   1. Merges the training and the test sets to create one data set.
   2. Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -30,7 +30,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
   4. Appropriately labels the data set with descriptive variable names.
   5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-Good luck!*
+*Good luck!*
 
 ### 3. The Project Dataset
 The Project Dataset came as a result of an experiment conducted at the Università degli Studi di Genova. An extract from their readme file:- 
@@ -56,10 +56,9 @@ The script can then be executed, and the following steps will happen
 
   4.3) The followng data are then read into memory and merged into one dataset:-
 
-  1. x_train.txt, x_test.txt
-  2. y_train.txt, y_test.txt
-  3. subject_train.txt, subject_test.txt
-
+  * x_train.txt, x_test.txt
+  * y_train.txt, y_test.txt
+  * subject_train.txt, subject_test.txt
 
   4.4) The columns from the x_train and x_test dataset were named using the description from the file "features.txt" whereas the column from y_train, y_test was named "Activity" and the one from subject was named "Subject"
   
