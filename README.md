@@ -1,1 +1,1 @@
-# Coursera-Getting-And-Cleaning-Data_Project
+## Getting and Cleaning Data Course Project August 2016
