@@ -4,7 +4,7 @@
 
 This repository contains 4 files as part of the project submission for the Coursera course "Getting and Cleaning data". The files are:-
   1. CODEBOOK.md - describe the tidy data file and explains the transformations done to obtain the resulting data and variables.
-  2. HARtidydata.csv - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
+  2. HARtidydata.txt - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
   3.   README.md - this readme file
   4. run_analysis.R - the R scriptfile that contains the R script to complete the assigned tasks
 
@@ -66,8 +66,8 @@ The script can then be executed, and the following steps will happen
   
   4.7) Some of the descriptions from the file "features.txt" were renamed to make them more meaningful
   
-  4.8) Lastly, a subset of the data was created with the average of each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.csv"
+  4.8) Lastly, a subset of the data was created with the average of each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.txt"
   
-###5. Description of the HARtidydata.csv and the CODEBOOK.md files##
+###5. Description of the HARtidydata.txt and the CODEBOOK.md files##
 
 The CODEBOOK.md file described the HARtidydata file and explains the transformations done to obtain the resulting data and variables.

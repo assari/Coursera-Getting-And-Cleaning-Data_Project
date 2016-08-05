@@ -282,10 +282,10 @@ tidydata <- HARMeanStd %>%
 ###Step 9. Write out the tidy data set to a csv file
 
 ```
-write.csv(tidydata,"./UCI HAR Dataset/HARtidydata.csv", row.names = FALSE)
+write.table(tidydata,"./UCI HAR Dataset/HARtidydata.txt", row.names = FALSE)
 ```
 
 Note that the tidy data file can be read back in as follows:-
 ```
-xx<-read.csv("./UCI HAR Dataset/HARtidydata.csv", header = TRUE, check.names = FALSE)
+xx<-read.table("./UCI HAR Dataset/HARtidydata.txt", header = TRUE, check.names = FALSE)
 ```
