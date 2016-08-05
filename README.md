@@ -1,4 +1,4 @@
-## Getting and Cleaning Data Coursera Course Project August 2016
+## Getting and Cleaning Data - Coursera Course Project August 2016
 
 ### 1. Introduction
 
@@ -6,7 +6,7 @@ This repository contains 4 files as part of the project submission for the Cours
   1. README.md - this readme file
   2. CODEBOOK.md - describe the tidy data file and explains the transformations done to obtain the resulting data and variables.
   3. run_analysis.R - the R scriptfile that contains the R script to complete the assigned tasks
-  4. HARtidydata.txt - the subset of HAR dataset in tidy data format and transformed as requested.
+  4. HARtidydata.txt - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
 
 ### 2. Project Description
 
@@ -73,4 +73,4 @@ The script can then be executed, and the following steps will happen
   
 ###5. Description of the HARtidydata.txt and the CODEBOOK.md files##
 
-The CODEBOOK.md files described the HARtidydata file and explains the transformations done to obtain the resulting data and variables.
+The CODEBOOK.md file described the HARtidydata file and explains the transformations done to obtain the resulting data and variables.
