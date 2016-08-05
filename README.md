@@ -6,7 +6,7 @@ This repository contains 4 files as part of the project submission for the Cours
   1. README.md - this readme file
   2. CODEBOOK.md - describe the tidy data file and explains the transformations done to obtain the resulting data and variables.
   3. run_analysis.R - the R scriptfile that contains the R script to complete the assigned tasks
-  4. HARtidydata.txt - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
+  4. HARtidydata.csv - the subset of HAR (Human Activity Recognition) dataset in tidy data format and transformed as requested.
 
 ### 2. Project Description
 
@@ -23,13 +23,13 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 *You should create one R script called run_analysis.R that does the following.*
-
+```
   1. Merges the training and the test sets to create one data set.
   2. Extracts only the measurements on the mean and standard deviation for each measurement.
   3. Uses descriptive activity names to name the activities in the data set
   4. Appropriately labels the data set with descriptive variable names.
   5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
+```
 *Good luck!*
 
 ### 3. The Project Dataset
@@ -67,10 +67,10 @@ The script can then be executed, and the following steps will happen
   
   4.6) The original dataset recorded the Activity as a series of numbers from 1 to 6. In this step, the numbers were converted to labels as per the file "activity_labels.txt"
   
-  4.7) Some of the descriptions fromn the file "features.txt" were renamed to make them more meaningful
+  4.7) Some of the descriptions from the file "features.txt" were renamed to make them more meaningful
   
-  4.8) Lastly, a subset of the data was created with the average of each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.txt"
+  4.8) Lastly, a subset of the data was created with the average of each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.csv"
   
-###5. Description of the HARtidydata.txt and the CODEBOOK.md files##
+###5. Description of the HARtidydata.csv and the CODEBOOK.md files##
 
 The CODEBOOK.md file described the HARtidydata file and explains the transformations done to obtain the resulting data and variables.
