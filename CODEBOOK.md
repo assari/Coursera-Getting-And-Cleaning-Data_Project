@@ -151,7 +151,7 @@ if (!file.exists(zipFile)) {
 # Uncompress data file, simply overwrite any files there
 unzip(zipFile, overwrite = TRUE)
 ```
-####Step 2: Merge the training dataset with the testing dataset
+####Step 2: Merge the training datasets with the testing datasets
 
 ```
 # Read in the x train and x test dataset
@@ -188,17 +188,14 @@ colnames(ydata)<-"Activity"
 colnames(subjectdata)<-"Subject"
 ```
 
-###Step 4. Combine the three datasets into one big dataset
+####Step 4. Combine the three datasets into one big dataset
 
 ```
-#
-# Can now combine the 3 datasets, X, y and subject into a single dataset
-# with each column having descriptive names
-#
+
 HARdata <- cbind(subjectdata, ydata, xdata)
 ```
 
-###Step 5. Select only the observations with Mean and Standard Deviation
+####Step 5. Select only the observations with Mean and Standard Deviation
 
 ```
 # First get the necessary columns with names containing "Mean" and "Std"
@@ -209,7 +206,7 @@ MeanStdCol <- grep(".*Mean.*|.*Std.*|Activity|Subject", names(HARdata), ignore.c
 HARMeanStd <- HARdata[,MeanStdCol]
 ```
 
-###Step 6. Replace the numbers in the Activity column with proper labels 
+####Step 6. Replace the numbers in the Activity column with proper labels 
 
 ```
 #
@@ -221,7 +218,7 @@ for (i in 1:6){
 }
 ```
 
-###Step 7. Rename any column names if they are not descriptive enough
+####Step 7. Rename any column names if they are not descriptive enough
 
 ```
 ## Change every first t and f to Time and Frequency Respectively
@@ -232,7 +229,7 @@ names(HARMeanStd)<-gsub("^f", "Freq", names(HARMeanStd))
 names(HARMeanStd)<-gsub("BodyBody", "Body", names(HARMeanStd))
 ```
 
-###Step 8. Group the dataset by Activity and Subject, then average their values
+####Step 8. Group the dataset by Activity and Subject, then average their values
 
 ```
 # Use Group and Summarise functions from dplyr library
@@ -250,12 +247,10 @@ tidydata <- HARMeanStd %>%
 ###Step 9. Write out the tidy data set to a csv file
 
 ```
-# Write the table out to a text file
 write.csv(tidydata,"./UCI HAR Dataset/HARtidydata.csv", row.names = FALSE)
 ```
 
 Note that the tidy data file can be read back in as follows:-
 ```
-## The written out tidydata can be read back in using the read.csv function
 xx<-read.csv("./UCI HAR Dataset/HARtidydata.csv", header = TRUE, check.names = FALSE)
 ```
