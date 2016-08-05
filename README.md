@@ -57,7 +57,6 @@ The script can then be executed, and the following steps will happen
   4.3) The followng data are then read into memory and merged into one dataset:-
 
   * x_train.txt, x_test.txt
-  * y_train.txt, y_test.txt
   * subject_train.txt, subject_test.txt
 
   4.4) The columns from the x_train and x_test dataset were named using the description from the file "features.txt" whereas the column from y_train, y_test was named "Activity" and the one from subject was named "Subject"
