@@ -42,6 +42,8 @@ The datasets consists of the following:-
   1. The Training datasets with recorded results of the experiments broken into 3 parts
   2. The Test datasets with recorded results of the experiments broken into 3 parts
   3. Several files containing the descriptions of the dataset and activity measured.
+
+as stated above, the zipped dataset can be downloaded from this url https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
   
 ### 4. Description of the R Script "run_analysis.R"
 
@@ -54,7 +56,7 @@ The script can then be executed, and the following steps will happen
 
   4.2) The downloaded zipped file will be unzipped into a subfolder called "UCI HAR Dataset" which will contain the relevant files required for this project.
 
-  4.3) The x,y and subjet training and test datasets are then read into memory and merged into one dataset:-
+  4.3) The x,y and subject training and test datasets are then read into memory and merged into one dataset:-
 
   4.4) The columns from the x_train and x_test dataset were named using the description from the file "features.txt" whereas the column from y_train, y_test was named "Activity" and the one from subject was named "Subject"
   
