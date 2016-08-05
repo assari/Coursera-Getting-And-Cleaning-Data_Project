@@ -1,13 +1,13 @@
 ##CODEBOOK for Getting and Cleaning Data Coursera Course Project August 2016
 
 ### CODEBOOK
-This CODEBOOK describes the tidy data set HARtidydata.txt.
+This CODEBOOK describes the tidy data set HARtidydata.txt and the steps and transformations done to derive the tidydata from the original dataset.
 
 ### The HARtidydata
 
-This Human Activity Recognition (HAR) dataset (180 rows by 88 columns) consists of the average values of the features tested during an experiment grouped by the Subject and Activity. The first two columns are the Subject and Activity values whilst the remaining 86 columns are the average values of the 86 features selected for this dataset.
+This Human Activity Recognition (HAR) dataset (180 rows by 88 columns) consists of the averaged values of the features tested during an experiment grouped by the Subject and Activity. The first two columns are  Subject and Activity values whilst the remaining 86 columns are the average values of the 86 features selected for this dataset.
 
-There were 30 subjects (numbered 1 to 30) and 6 activities labeled as:-
+There were 30 subjects tested (numbered 1 to 30) and 6 activities labeled as:-
 
   1. LAYING
   2. SITTING
@@ -20,7 +20,7 @@ and the means and standard deviations measures have been averaged over time for 
 
 Relevant extract (with same edits) from the "features-info.txt" description file from the original dataset:-
 
-*The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. *
+*The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.*
 
 *Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag).* 
 
@@ -130,9 +130,9 @@ The descriptions for the above measures are best described in the "features-info
 
 The original dataset can be found at this url https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip .
 
-The relevant datasets from the above site, when merged, consisted of 10,299 observations (rows) and 563 variables (columns). Prior to the averaging, only those columns containing the mean and standard deviations were selected and subsequently grouped by Activity and Subject and then averaged.
+The relevant datasets from the above site, when merged, consisted of 10,299 observations (rows) and 563 variables (columns). To generate this dataset, only those observations containing the mean and standard deviations were selected and subsequently grouped by Activity and Subject and then averaged.
 
-Running the R Script "run_analysis.R" will download and unzip the files prior to the transformations as described within the R Script itself as well as the README.md file.
+Running the R Script **"run_analysis.R"** will download and unzip the files prior to the transformations as described within the R Script itself as well as the **README.md** file.
 
 ### The Transformations on the dataset
 
@@ -150,4 +150,111 @@ if (!file.exists(zipFile)) {
 
 # Uncompress data file, simply overwrite any files there
 unzip(zipFile, overwrite = TRUE)
+```
+####Step 2: Merge the training dataset with the testing dataset
+
+```
+# Read in the x train and x test dataset
+x_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE)
+x_test  <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE)
+# Merge the x series dataset by rows
+xdata<-rbind(x_train,x_test)
+
+# Read in the y train and y test dataset
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE)
+y_test  <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE)
+# Merge the y series dataset by rows
+ydata<-rbind(y_train,y_test)
+
+# Read in the subject train and subject test dataset
+subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE)
+subject_test  <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE)
+# Merge the subject dataset by rows
+subjectdata<-rbind(subject_train,subject_test)
+```
+ 
+####Step 3: Give meaningful names to the columns in the datasets
+```
+# The descriptive names for the x dataset can be found in the features.txt file
+features <- read.table("./UCI HAR Dataset/features.txt", header = FALSE, stringsAsFactors=FALSE)
+
+# Now we can name the columns, using the text in column 2 of the features data.table
+colnames(xdata) <- features[,2]
+
+# Set the column name for this 1 var data.table "ydata" to "Activity"
+colnames(ydata)<-"Activity"
+
+# Set the column name for this 1 var data.table to "Subject"
+colnames(subjectdata)<-"Subject"
+
+###Step 3. Combine the three datasets into one big dataset
+
+```
+#
+# Can now combine the 3 datasets, X, y and subject into a single dataset
+# with each column having descriptive names
+#
+HARdata <- cbind(subjectdata, ydata, xdata)
+```
+
+###Step 4. Select only the observations with Mean and Standard Deviation
+
+```
+# First get the necessary columns with names containing "Mean" and "Std"
+#  plus the 2 at the start "Activity" & "SUbject"
+MeanStdCol <- grep(".*Mean.*|.*Std.*|Activity|Subject", names(HARdata), ignore.case=TRUE)
+
+# Then subset the data with these columns
+HARMeanStd <- HARdata[,MeanStdCol]
+```
+
+###Step 5. Replace the numbers in the Activity column with proper labels 
+
+```
+#
+# Load the activity labels
+# then replace the numbers with descriptive activity names
+Activity_Labels <- read.table("./UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE, header = FALSE)
+for (i in 1:6){
+    HARMeanStd$Activity[HARMeanStd$Activity == i] <- Activity_Labels[i,2]
+}
+```
+
+###Step 6. Rename any column names if they are not descriptive enough
+
+```
+## Change every first t and f to Time and Frequency Respectively
+names(HARMeanStd)<-gsub("^t", "Time", names(HARMeanStd))
+names(HARMeanStd)<-gsub("^f", "Freq", names(HARMeanStd))
+
+## BodyBody can be simplified to Body
+names(HARMeanStd)<-gsub("BodyBody", "Body", names(HARMeanStd))
+```
+
+###Step 7. Group the dataset by Activity and Subject, then average their values
+
+```
+# Use Group and Summarise functions from dplyr library
+library(dplyr)
+
+# Apply the mean function on the grouped variables "Subject" and "Activity"
+# to get the average by Subject and Activity
+#
+tidydata <- HARMeanStd %>% 
+            group_by(Subject, Activity) %>%
+            summarise_each(funs(mean))
+
+```
+
+###Step 8. Write out the tidy data set to a csv file
+
+```
+# Write the table out to a text file
+write.csv(tidydata,"./UCI HAR Dataset/HARtidydata.csv", row.names = FALSE)
+```
+
+Note that the tidy data file can be read back in as follows:-
+```
+## The written out tidydata can be read back in using the read.csv function
+xx<-read.csv("./UCI HAR Dataset/HARtidydata.csv", header = TRUE, check.names = FALSE)
 ```
