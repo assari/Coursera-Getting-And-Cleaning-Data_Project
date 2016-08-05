@@ -54,7 +54,7 @@ The script can then be executed, and the following steps will happen
 
   4.2) The downloaded zipped file will be unzipped into a subfolder called "UCI HAR Dataset" which will contain the relevant files required for this project.
 
-  4.3) The followng data are then read into memory and merged into one dataset:-
+  4.3) The x,y and subjet training and test datasets are then read into memory and merged into one dataset:-
 
   4.4) The columns from the x_train and x_test dataset were named using the description from the file "features.txt" whereas the column from y_train, y_test was named "Activity" and the one from subject was named "Subject"
   
