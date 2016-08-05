@@ -3,7 +3,7 @@
 ### CODEBOOK
 This CODEBOOK describes the tidy data set HARtidydata.txt and the steps and transformations done to derive the tidydata from the original dataset.
 
-### The HARtidydata
+### The HARtidydata dataset
 
 This Human Activity Recognition (HAR) dataset (180 rows by 88 columns) consists of the averaged values of the features tested during an experiment grouped by the Subject and Activity. The first two columns are  Subject and Activity values whilst the remaining 86 columns are the average values of the 86 features selected for this dataset.
 
@@ -123,7 +123,7 @@ The column names and descriptions are as follows:-
 |87|angle(Y,gravityMean)| |
 |88|angle(Z,gravityMean)| |
 
-The descriptions for the above measures are best described in the "features-info.txt" contained as part of the downloadable dataset.
+The descriptions for the above measures are best described in the "features-info.txt" contained as part of the original downloadable dataset.
 
 
 ### The original dataset
@@ -186,8 +186,9 @@ colnames(ydata)<-"Activity"
 
 # Set the column name for this 1 var data.table to "Subject"
 colnames(subjectdata)<-"Subject"
+```
 
-###Step 3. Combine the three datasets into one big dataset
+###Step 4. Combine the three datasets into one big dataset
 
 ```
 #
@@ -197,7 +198,7 @@ colnames(subjectdata)<-"Subject"
 HARdata <- cbind(subjectdata, ydata, xdata)
 ```
 
-###Step 4. Select only the observations with Mean and Standard Deviation
+###Step 5. Select only the observations with Mean and Standard Deviation
 
 ```
 # First get the necessary columns with names containing "Mean" and "Std"
@@ -208,7 +209,7 @@ MeanStdCol <- grep(".*Mean.*|.*Std.*|Activity|Subject", names(HARdata), ignore.c
 HARMeanStd <- HARdata[,MeanStdCol]
 ```
 
-###Step 5. Replace the numbers in the Activity column with proper labels 
+###Step 6. Replace the numbers in the Activity column with proper labels 
 
 ```
 #
@@ -220,7 +221,7 @@ for (i in 1:6){
 }
 ```
 
-###Step 6. Rename any column names if they are not descriptive enough
+###Step 7. Rename any column names if they are not descriptive enough
 
 ```
 ## Change every first t and f to Time and Frequency Respectively
@@ -231,7 +232,7 @@ names(HARMeanStd)<-gsub("^f", "Freq", names(HARMeanStd))
 names(HARMeanStd)<-gsub("BodyBody", "Body", names(HARMeanStd))
 ```
 
-###Step 7. Group the dataset by Activity and Subject, then average their values
+###Step 8. Group the dataset by Activity and Subject, then average their values
 
 ```
 # Use Group and Summarise functions from dplyr library
@@ -246,7 +247,7 @@ tidydata <- HARMeanStd %>%
 
 ```
 
-###Step 8. Write out the tidy data set to a csv file
+###Step 9. Write out the tidy data set to a csv file
 
 ```
 # Write the table out to a text file
