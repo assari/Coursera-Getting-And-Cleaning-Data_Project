@@ -4,7 +4,7 @@
 
 This repository contains 4 files as part of the project submission for the Coursera course "Getting and Cleaning data". The files are:-
   1. README.md - this readme file
-  2. CODEBOOK.md - 
+  2. CODEBOOK.md - describe the tidy data file and explains the transformations done to obtain the resulting data and variables.
   3. run_analysis.R - the R scriptfile that contains the R script to complete the assigned tasks
   4. HARtidydata.txt - the subset of HAR dataset in tidy data format and transformed as requested.
 
@@ -58,14 +58,16 @@ The script can then be executed, and the following steps will happen
   1. x_train.txt, x_test.txt
   2. y_train.txt, y_test.txt
   3. subject_train.txt, subject_test.txt
-	
-  4.4) The columns from the x_train and x_test dataset were named using the description from the file features.txt whereas the column from y_train, y_test were named "Activity" and the one from subject were name "Subject"
+
+  4.4) The columns from the x_train and x_test dataset were named using the description from the file "features.txt" whereas the column from y_train, y_test was named "Activity" and the one from subject was named "Subject"
   
-  4.5) The original dataset recorded the Activity as a series of numbers from 1 to 6. The numbers were converted to labels as per the file "activity_labels.txt"
+  4.5) A subset of the large dataset was created, extracting only the relevant columns recording the  measurements on the mean and standard deviation for each measurement
   
-  4.6) Some of the descriptions which contained in the file "features.txt" were renamed to make them more meaningful
+  4.6) The original dataset recorded the Activity as a series of numbers from 1 to 6. In this step, the numbers were converted to labels as per the file "activity_labels.txt"
   
-  4.7) Lastly, a subset of the data was created with the average of each variable for each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.txt"
+  4.7) Some of the descriptions fromn the file "features.txt" were renamed to make them more meaningful
+  
+  4.8) Lastly, a subset of the data was created with the average of each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.txt"
   
 ##5. Description of the HARtidydata.txt and the CODEBOOK.md files##
 
