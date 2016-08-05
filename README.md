@@ -55,9 +55,11 @@ The script can then be executed, and the following steps will happen
   4.2) The downloaded zipped file will be unzipped into a subfolder called "UCI HAR Dataset" which will contain the relevant files required for this project.
 
   4.3) The followng data are then read into memory and merged into one dataset:-
+
   1. x_train.txt, x_test.txt
   2. y_train.txt, y_test.txt
   3. subject_train.txt, subject_test.txt
+
 
   4.4) The columns from the x_train and x_test dataset were named using the description from the file "features.txt" whereas the column from y_train, y_test was named "Activity" and the one from subject was named "Subject"
   
@@ -69,6 +71,6 @@ The script can then be executed, and the following steps will happen
   
   4.8) Lastly, a subset of the data was created with the average of each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.txt"
   
-##5. Description of the HARtidydata.txt and the CODEBOOK.md files##
+###5. Description of the HARtidydata.txt and the CODEBOOK.md files##
 
 The CODEBOOK.md files described the HARtidydata file and explains the transformations done to obtain the resulting data and variables.
