@@ -5,7 +5,7 @@ This CODEBOOK describes the tidy data set HARtidydata.txt.
 
 ### The HARtidydata
 
-This dataset (180 rows by 88 columns) consists of the average values of the features tested during an experiment grouped by the Subject and Activity. The first two columns are the Subject and Activity values whilst the remaining 86 columns are the average values of the 86 features selected for this dataset.
+This Human Activity Recognition (HAR) dataset (180 rows by 88 columns) consists of the average values of the features tested during an experiment grouped by the Subject and Activity. The first two columns are the Subject and Activity values whilst the remaining 86 columns are the average values of the 86 features selected for this dataset.
 
 There were 30 subjects (numbered 1 to 30) and 6 activities labeled as:-
 
@@ -122,3 +122,32 @@ The column names and descriptions are as follows:-
 |86|angle(X,gravityMean)| |
 |87|angle(Y,gravityMean)| |
 |88|angle(Z,gravityMean)| |
+
+The descriptions for the above measures are best described in the "features-info.txt" contained as part of the downloadable dataset.
+
+
+### The original dataset
+
+The original dataset can be found at this url https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip .
+
+The relevant datasets from the above site, when merged, consisted of 10,299 observations (rows) and 563 variables (columns). Prior to the averaging, only those columns containing the mean and standard deviations were selected and subsequently grouped by Activity and Subject and then averaged.
+
+Running the R Script "run_analysis.R" will download and unzip the files prior to the transformations as described within the R Script itself as well as the README.md file.
+
+### The Transformations on the dataset
+
+####Step 1: Downloading and unzipping the dataset
+
+```
+# Download the zipped dataset from provided URL
+url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+zipFile <- "UCIdataset.zip"
+
+# Download the dataset, if it doesnt already exist in working directory
+if (!file.exists(zipFile)) {
+    download.file(url,zipFile)
+}
+
+# Uncompress data file, simply overwrite any files there
+unzip(zipFile, overwrite = TRUE)
+```
