@@ -34,15 +34,16 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 ### 3. The Project Dataset
 The Project Dataset came as a result of an experiment conducted at the Università degli Studi di Genova. An extract from their readme file:- 
+
 *The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data.*
 
-The datasets consits of the following:-
+The datasets consists of the following:-
 
   1. The Training datasets with recorded results of the experiments broken into 3 parts
   2. The Test datasets with recorded results of the experiments broken into 3 parts
   3. Several files containing the descriptions of the dataset and activity measured.
   
-### 4. Description of the R Script **run_analysis.R**
+### 4. Description of the R Script "run_analysis.R"
 
 The R script assumes you are already in a working directory of your choice.
 Please use the **setwd** function to set your working directory
@@ -54,10 +55,18 @@ The script can then be executed, and the following steps will happen
   4.2) The downloaded zipped file will be unzipped into a subfolder called "UCI HAR Dataset" which will contain the relevant files required for this project.
 
   4.3) The followng data are then read into memory and merged into one dataset:-
-    1. x_train.txt, x_test.txt
-	2. y_train.txt, y_test.txt
-	3. subject_train.txt, subject_test.txt
+  1. x_train.txt, x_test.txt
+  2. y_train.txt, y_test.txt
+  3. subject_train.txt, subject_test.txt
 	
   4.4) The columns from the x_train and x_test dataset were named using the description from the file features.txt whereas the column from y_train, y_test were named "Activity" and the one from subject were name "Subject"
   
-  4.5) 
+  4.5) The original dataset recorded the Activity as a series of numbers from 1 to 6. The numbers were converted to labels as per the file "activity_labels.txt"
+  
+  4.6) Some of the descriptions which contained in the file "features.txt" were renamed to make them more meaningful
+  
+  4.7) Lastly, a subset of the data was created with the average of each variable for each activity and each subject in a tidydata format and this was written out to a txt file as "HARtidydata.txt"
+  
+##5. Description of the HARtidydata.txt and the CODEBOOK.md files##
+
+The CODEBOOK.md files described the HARtidydata file and explains the transformations done to obtain the resulting data and variables.
