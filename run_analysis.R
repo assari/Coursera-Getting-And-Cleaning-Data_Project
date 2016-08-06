@@ -130,8 +130,8 @@ tidydata <- HARMeanStd %>%
             summarise_each(funs(mean))
 
 # Write the table out to a text file
-write.csv(tidydata,"./UCI HAR Dataset/HARtidydata.csv", row.names = FALSE)
+write.table(tidydata,"./UCI HAR Dataset/HARtidydata.txt", row.names = FALSE)
 
 ## The written out tidydata can be read back in using the read.csv function
-xx<-read.csv("./UCI HAR Dataset/HARtidydata.csv", header = TRUE, check.names = FALSE)
+xx<-read.table("./UCI HAR Dataset/HARtidydata.txt", header = TRUE, check.names = FALSE)
 
